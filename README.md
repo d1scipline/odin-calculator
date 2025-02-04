@@ -1,0 +1,1 @@
+An on screen calculator as a part of The Odin Project curriculum's first course's final project.
