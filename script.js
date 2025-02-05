@@ -31,6 +31,9 @@ function divide(a, b) {
 }
 
 function operate(first_num, second_num, operator) {
+    if (operator == "/" && second_num == 0) {
+        return "ERROR";
+    }
     switch (operator) {
         case "+":
             return add(first_num, second_num);
@@ -73,10 +76,16 @@ function getOperator(event) {
     //case for user pressing on = after inputting 2 numbers and an operator
     if (value == "=" && number != undefined && numberInMemory != undefined && operator != undefined) {
         numberInMemory = operate(numberInMemory, number, operator);
+        if (numberInMemory == "ERROR") {
+            display.textContent = "cant do that mate :D";
+            numberInMemory = undefined;
+            number = undefined;
+            operator = undefined;
+            return;
+        }
         number = undefined;
         operator = undefined;
         displayNumber(numberInMemory);
-        console.log(numberInMemory, number, operator);
     }
 
     //case for user pressing on an operator after inputting the first number
@@ -89,6 +98,13 @@ function getOperator(event) {
     //case for user pressing on an operator after inputting 2 numbers and an operator (calculates the previous operation and uses it as the first number)
     else if (number != undefined && numberInMemory != undefined && operator != undefined) {
         numberInMemory = operate(numberInMemory, number, operator);
+        if (numberInMemory == "ERROR") {
+            display.textContent = "You cant do that mate :D";
+            numberInMemory = undefined;
+            number = undefined;
+            operator = undefined;
+            return;
+        }
         operator = value;
         number = undefined;
         displayNumber(numberInMemory);
