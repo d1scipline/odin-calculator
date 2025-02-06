@@ -77,7 +77,7 @@ function getOperator(event) {
     if (value == "=" && number != undefined && numberInMemory != undefined && operator != undefined) {
         numberInMemory = operate(numberInMemory, number, operator);
         if (numberInMemory == "ERROR") {
-            display.textContent = "cant do that mate :D";
+            display.textContent = "cant do that";
             numberInMemory = undefined;
             number = undefined;
             operator = undefined;
@@ -99,7 +99,7 @@ function getOperator(event) {
     else if (number != undefined && numberInMemory != undefined && operator != undefined) {
         numberInMemory = operate(numberInMemory, number, operator);
         if (numberInMemory == "ERROR") {
-            display.textContent = "You cant do that mate :D";
+            display.textContent = "cant do that";
             numberInMemory = undefined;
             number = undefined;
             operator = undefined;
