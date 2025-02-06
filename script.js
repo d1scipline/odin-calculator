@@ -137,6 +137,11 @@ function displayNumber(numberToDisplay) {
     if (isInt(numberToDisplay) == false) {
         numberToDisplay = round(numberToDisplay, 2);
     }
+    if (numberToDisplay > 999999999999) {
+        let scientificNotation = numberToDisplay.toExponential(6);
+        display.textContent = scientificNotation;
+        return;
+    }
     display.textContent = numberToDisplay.toString();
 }
 
