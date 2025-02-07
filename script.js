@@ -10,6 +10,8 @@ let operators = document.querySelectorAll(".operator");
 let clearButton = document.querySelector(".C");
 
 function add(a, b) {
+    a = new Number(a);
+    b = new Number(b);
     return a + b;
 }
 
@@ -34,18 +36,35 @@ function operate(first_num, second_num, operator) {
     if (operator == "/" && second_num == 0) {
         return "ERROR";
     }
+    let result = 0;
     switch (operator) {
         case "+":
-            return add(first_num, second_num);
+            result = add(first_num, second_num);
+            if (!isInt(result)) {
+                result = round(result, 3);
+            }
+            return result
             break;
         case "-":
-            return subtract(first_num, second_num);
+            result = subtract(first_num, second_num);
+            if (!isInt(result)) {
+                result = round(result, 3);
+            }
+            return result
             break;
         case "*":
-            return multiply(first_num, second_num);
+            result = multiply(first_num, second_num);
+            if (!isInt(result)) {
+                result = round(result, 3);
+            }
+            return result
             break;
         case "/":
-            return divide(first_num, second_num);
+            result = divide(first_num, second_num);
+            if (!isInt(result)) {
+                result = round(result, 3);
+            }
+            return result
             break;
     }
 }
@@ -64,7 +83,7 @@ function getNumber(event) {
     if (number == undefined) {
         number = value;
     }
-    else {
+    else if (number.toString().length <= 12){
         number = new Number(number.toString() + value.toString());
     }
     displayNumber(number);
@@ -134,15 +153,19 @@ function clearDisplay() {
 }
 
 function displayNumber(numberToDisplay) {
-    if (isInt(numberToDisplay) == false) {
-        numberToDisplay = round(numberToDisplay, 2);
-    }
     if (numberToDisplay > 999999999999) {
         let scientificNotation = numberToDisplay.toExponential(6);
         display.textContent = scientificNotation;
         return;
     }
     display.textContent = numberToDisplay.toString();
+}
+
+function addDecimal(){
+    if (number != undefined && !(number.toString().includes("."))) {
+        number = number.toString() + ".";
+        displayNumber(number);
+    }
 }
 
 numbers = document.querySelectorAll(".number");
@@ -187,3 +210,6 @@ document.addEventListener('keypress', function(event) {
         getOperator(obj);
     }
 });
+
+decimalButton = document.querySelector(".decimal");
+decimalButton.addEventListener("click", addDecimal);

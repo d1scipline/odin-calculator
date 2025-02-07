@@ -30,7 +30,6 @@ body {
 .buttons {
     display: flex;
     flex-direction: row;
-    padding-bottom: 20px;
 }
 
 .column {
@@ -39,9 +38,15 @@ body {
     flex-grow: 1;
 }
 
-.number, .operator, .C {
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.number, .operator, .C, .decimal, .backspace {
     background-color: #EFE9D5;
-    font-size: 80px;
+    font-size: 60px;
     flex-grow: 1;
     margin: 10px;
     border-radius: 5%;
