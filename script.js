@@ -153,8 +153,8 @@ function clearDisplay() {
 }
 
 function displayNumber(numberToDisplay) {
-    if (numberToDisplay > 999999999999) {
-        let scientificNotation = numberToDisplay.toExponential(6);
+    if (numberToDisplay > 999999999999 || numberToDisplay.toString().length >= 12) {
+        let scientificNotation = (new Number(numberToDisplay)).toExponential(6);
         display.textContent = scientificNotation;
         return;
     }
@@ -174,16 +174,15 @@ function deleteNumber() {
         if (number == "-" || number == "") {
             number = "0";
         }
-
+        displayNumber(number);
     }
-    displayNumber(number);
 }
 
 function makeNegative() {
     if (number != undefined) {
         number = number * -1;
+        displayNumber(number);
     }
-    displayNumber(number);
 }
 
 numbers = document.querySelectorAll(".number");
