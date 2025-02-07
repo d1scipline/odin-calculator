@@ -30,7 +30,7 @@ body {
 .buttons {
     display: flex;
     flex-direction: row;
-    margin: 0;
+    padding-bottom: 20px;
 }
 
 .column {
