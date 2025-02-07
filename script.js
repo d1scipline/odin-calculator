@@ -175,4 +175,15 @@ document.addEventListener('keypress', function(event) {
         }
         getOperator(obj);
     }
+    else if (event.key == "c" || event.key == "C") {
+        clearDisplay();
+    }
+    else if (event.key == "Enter") {
+        obj = {
+            target: {
+                textContent: "=", 
+            }
+        }
+        getOperator(obj);
+    }
 });
