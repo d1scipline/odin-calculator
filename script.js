@@ -175,6 +175,13 @@ function deleteNumber() {
     displayNumber(number);
 }
 
+function makeNegative() {
+    if (number != undefined) {
+        number = number * -1;
+    }
+    displayNumber(number);
+}
+
 numbers = document.querySelectorAll(".number");
 numbers.forEach((element) => {
     element.addEventListener("click", getNumber);
@@ -227,3 +234,6 @@ decimalButton.addEventListener("click", addDecimal);
 
 backspaceButton = document.querySelector(".backspace");
 backspaceButton.addEventListener("click", deleteNumber);
+
+negativeButton = document.querySelector(".negative");
+negativeButton.addEventListener("click", makeNegative);

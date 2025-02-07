@@ -44,7 +44,7 @@ body {
     justify-content: space-between;
 }
 
-.number, .operator, .C, .decimal, .backspace {
+.number, .operator, .C, .decimal, .backspace, .negative {
     background-color: #EFE9D5;
     font-size: 60px;
     flex-grow: 1;
