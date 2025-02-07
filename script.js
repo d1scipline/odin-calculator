@@ -168,6 +168,13 @@ function addDecimal(){
     }
 }
 
+function deleteNumber() {
+    if (number != undefined) {
+        number = number.toString().substring(0, number.toString().length - 1);
+    }
+    displayNumber(number);
+}
+
 numbers = document.querySelectorAll(".number");
 numbers.forEach((element) => {
     element.addEventListener("click", getNumber);
@@ -180,6 +187,7 @@ operators.forEach((element) => {
 
 clearButton.addEventListener("click", clearDisplay);
 
+//keyboard support
 document.addEventListener('keypress', function(event) {
     console.log(event.key);
     if (event.key in ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]) {
@@ -209,7 +217,13 @@ document.addEventListener('keypress', function(event) {
         }
         getOperator(obj);
     }
+    else if (event.key == ".") {
+        addDecimal();
+    }
 });
 
 decimalButton = document.querySelector(".decimal");
 decimalButton.addEventListener("click", addDecimal);
+
+backspaceButton = document.querySelector(".backspace");
+backspaceButton.addEventListener("click", deleteNumber);
