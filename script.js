@@ -171,6 +171,10 @@ function addDecimal(){
 function deleteNumber() {
     if (number != undefined) {
         number = number.toString().substring(0, number.toString().length - 1);
+        if (number == "-" || number == "") {
+            number = "0";
+        }
+
     }
     displayNumber(number);
 }
