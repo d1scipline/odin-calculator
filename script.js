@@ -156,3 +156,23 @@ operators.forEach((element) => {
 })
 
 clearButton.addEventListener("click", clearDisplay);
+
+document.addEventListener('keypress', function(event) {
+    console.log(event.key);
+    if (event.key in ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]) {
+        obj = {
+            target: {
+                textContent: event.key,
+            }
+        }
+        getNumber(obj);
+    }
+    else if (event.key === "/" || event.key === "*" || event.key === "+" || event.key === "-" || event.key === "=") {
+        obj = {
+            target: {
+                textContent: event.key,
+            }
+        }
+        getOperator(obj);
+    }
+});
