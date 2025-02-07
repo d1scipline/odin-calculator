@@ -89,14 +89,14 @@ function getOperator(event) {
     }
 
     //case for user pressing on an operator after inputting the first number
-    else if (numberInMemory == undefined && number != undefined) {
+    else if (numberInMemory == undefined && number != undefined && value != "=") {
         operator = value;
         numberInMemory = number;
         number = undefined;
     }
 
     //case for user pressing on an operator after inputting 2 numbers and an operator (calculates the previous operation and uses it as the first number)
-    else if (number != undefined && numberInMemory != undefined && operator != undefined) {
+    else if (number != undefined && numberInMemory != undefined && operator != undefined && value != "=") {
         numberInMemory = operate(numberInMemory, number, operator);
         if (numberInMemory == "ERROR") {
             display.textContent = "cant do that";
@@ -111,12 +111,12 @@ function getOperator(event) {
     }
 
     //case for user pressing on an operator after using the = button
-    else if (numberInMemory != undefined && number == undefined) {
+    else if (numberInMemory != undefined && number == undefined && value != "=") {
         operator = value;
     }
     
     //case for user inputting new number after getting a result (fresh start lol)
-    else if (numberInMemory != undefined && number != undefined && operator == undefined) {
+    else if (numberInMemory != undefined && number != undefined && operator == undefined && value != "=") {
         numberInMemory = number;
         number = undefined;
         operator = value;
